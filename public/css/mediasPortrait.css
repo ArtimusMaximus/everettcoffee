@@ -1,0 +1,61 @@
+/* @media (orientation: portrait) and (max-width: 375px) {
+    .textoutline {
+        height: 27vh;
+    }
+}
+
+
+@media (orientation: portrait) and (min-width: 414px) {
+    .textoutline {
+        height: 21vh;
+    }
+}
+
+@media (min-width: 375px) and (max-width: 500px) {
+
+} */
+
+@media (orientation: portrait) {
+    #activity {
+        font-size: 1.5vh;
+    }
+    #address {
+        font-size: 1.5vh;
+    }
+    #business {
+        font-weight: 900;
+        font-size: 1.75vh;
+    }
+    #everetth3 {
+        font-size: 2vw;
+        
+    }
+    #h1coffee {
+        font-size: 7vw;
+        margin-right: 5px;
+    }
+    #search {
+        width: 20vw;
+        margin-left: 0;
+        
+    }
+    .material-symbols-outlined {
+        font-size: 17px;
+        margin-top: 0px;
+        
+        
+    }
+    ul > li {
+        width: 100%;
+    }
+    .navbar {
+        height: 14vh;
+    }
+
+    #weather h2 {
+        display: none;
+    }
+    #weather p {
+        font-size: 2vw;
+    }
+}

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everett Dining</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,200;0,500;1,500&family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/mediastyles.css">
+</head>
+<style></style>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="navcontainer">
+                <ul>
+                    <li id="weather"></li>
+                    <h3>City of Everett&nbsp;</h3>
+                    <h1>Restaurants</h1>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div id="maincontainer">
+        <input id="search" /><button id="clearButton">Clear Search</button>
+
+        <ul id="ullist"></ul>
+
+        
+        <div id="pagiNumbers"></div>
+        <div id="navbuttons">
+            
+            <span id="prev2"><a id="prev" class="naviButtons noSelect">&lt;&lt;</a></span><span id="next2"><a id="next" class="naviButtons noSelect">&gt;&gt;</a></span>
+        </div>
+        <!-- <button id="prev3">&lt;&lt;</button> -->
+    </div>
+
+    <div id="modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close-modal"><h2>X</h2></span>
+                <h2 style="font-style: italic;">Info</h2>
+                <hr />
+            </div>
+            <div class="modal-body">
+                <p style="font-weight: 800;"><h3>This webpage was made from scratch using plain Javascript, HTML, & CSS</h3></p>
+                <p style="font-weight: 700;">This webpage demonstrates:</p>
+                <ul id="modalUl">
+                    <li id="location1" style="font-style: italic;"></li>
+                    <li id="location2" style="font-style: italic;"></li>
+                    <li id="location3" style="font-style: italic;"></li>
+                    <li id="location4" style="font-style: italic;"></li>
+                    <li id="location5" style="font-style: italic;"></li>
+                </ul>
+                <p><h2><a style="font-style: italic; color: inherit;" href="https://www.linkedin.com/in/arthur-m-16a8a149/" target="_blank" id="creatorP"></a></h2></p>
+                <p><h2><a style="font-style: italic; color: inherit;" href="https://ivthe.art" target="_blank" id="portfolioP"></a></h2></p>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    <footer class="footer">
+        <div class="ulcontainer"> 
+            <span class="modalbutton noSelect" id="modalButtonId"><a>About</a></span>
+            <!-- <a id="top" href="#">Top</a> -->
+        </div>
+    </footer>
+    
+
+    <script type="module">
+        import { paginate } from "./t800lib.js";
+
+        const url1 = `https://data.everettwa.gov/resource/m267-sbt9.json`
+
+        const getDining = () => 
+            fetch(url1)
+                .then((res) => res.json())
+                .then(data => cardGenerator(data))
+                .catch(err => console.log(err))
+
+        getDining()
+
+        const cardGenerator = async (data) => {
+            let maincontainer = document.querySelector('#maincontainer')
+            let pagiContainer = document.querySelector('#pagiNumbers')
+            let uList = document.querySelector('#ullist')
+
+            paginate(data, pagiResults.choice, uList, pagiContainer)
+
+            //search bar
+        
+            let cardDiv = Array.from(document.querySelectorAll('.card'))
+            let searchInput = document.getElementById('search')
+
+            let liClass = Array.from(document.querySelectorAll('.liClass'))
+            // searchInput.onfocus = () => liClass.forEach(i => i.classList.add('revealAll'))
+            
+            let arr = [];
+            arr.push(uList.innerHTML)
+            
+            searchInput.addEventListener('keydown', e => {
+                cardDiv.forEach((i, index) => {
+    
+                    if (!i.children[0].innerText.toLowerCase().includes(e.target.value)) {
+                        i.parentElement.className = 'liClass hide'
+
+                    } else if (i.children[0].innerText.toLowerCase().includes(e.target.value)) {
+                        i.parentElement.classList.remove('hide')
+                    }
+                })
+                
+            })
+
+            let clearButton = document.getElementById('clearButton')
+            
+                clearButton.addEventListener('click', e => {
+                    let activeLink = document.querySelector('.active')
+                    if (e) {
+                        searchInput.value = ''
+                        cardDiv.forEach(i => i.className = 'card')
+                        // liClass.forEach(i => i.classList.add('revealAll'))
+                        
+                        searchInput.focus = true
+
+                        activeLink.click()
+                        
+                    }
+                })
+
+        } // end card generator
+
+
+    </script>
+    
+    <script type="module">
+        import { lat, lon, apiKey } from './facts.js'
+        
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
+
+        const getWeather = async (url) => {
+            await fetch(url)
+                .then((res) => res.json())
+                .then(data => mapWeather(data))
+                .catch(err => console.log(err))
+        }
+
+        const mapWeather = async (data) => {
+            let w = document.getElementById('weather')
+            const { name, main, weather, wind } = data
+            const f = main.feels_like - 273.15
+            const windTemp = wind.deg - 273.15
+            
+            const temp = celsius => {
+                let temp = celsius * 1.8 + 32
+                return Math.round(temp)
+            }
+
+            return w.innerHTML = `
+                <h2>${name}'s Current Weather</h2>
+                <p>Feels Like: ${temp(f)}°F</p>
+                <p>Description: ${weather[0].description}</p>
+                <p>Wind speed: ${wind.speed}</p>
+                <p>Wind Direction: ${wind.deg}°<div id="pointer" style="transform: rotate(${Number(wind.deg) / 4}deg); ${Number(wind.deg) === 0 ? 'height: 0px;' : 'height:2px;'}">N</div></p>
+            `
+        }
+        getWeather(url)
+
+    </script>
+
+    <script type="module">
+        import { printText } from './t800lib.js'
+        let newArr1 = [];
+        let newArr2 = [];
+        let newArr3 = [];
+        let newArr4 = [];
+        let newArr5 = [];
+        let newArr6 = [];
+        let newArr7 = [];
+        let count = 1;
+        let alreadyDone = { printedText: false }
+        let creatorP = document.querySelector('#creatorP')
+        let portfolioP = document.querySelector('#portfolioP')
+
+        let linkedInProfile =  'Visit my linkedIn Profile!'
+        let portFolioLink =  'Portfolio Page'
+        
+        let location1 = document.querySelector('#location1')
+        let location2 = document.querySelector('#location2')
+        let location3 = document.querySelector('#location3')
+        let location4 = document.querySelector('#location4')
+        let location5 = document.querySelector('#location5')
+        let words = ['API data fetching', 'Data formatting', 'Data pagination', 'Search capabilities', 'Custom modal component']
+
+        let modal = document.getElementById('modal')
+        let openBtn = document.querySelector('.modalbutton')
+        let closeBtn = document.querySelector('.close-modal')
+
+        openBtn.onclick = () => openModal()
+        closeBtn.onclick = () => closeModal()
+        window.onclick = (e) => outsideClick(e)
+
+        const openModal = () => {
+            modal.style.display = 'block'
+
+            if (alreadyDone.printedText) return
+
+            const myPromise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    return resolve(printText(words[0], 55, newArr1, count, location1))
+                }, 250);
+            })
+            myPromise
+                .then(() => setTimeout(() => {
+                    printText(words[1], 55, newArr2, count, location2)
+                }, 1000))
+                .then(() => setTimeout(() => {
+                    printText(words[2], 55, newArr3, count, location3)
+                }, 2000))
+                .then(() => setTimeout(() => {
+                    printText(words[3], 55, newArr4, count, location4)
+                }, 3000))
+                .then(() => setTimeout(() => {
+                    printText(words[4], 55, newArr5, count, location5)
+                }, 4250))
+                .then(() => setTimeout(() => {
+                    printText(linkedInProfile, 15, newArr6, count, creatorP)
+                }, 5750))
+                .then(() => setTimeout(() => {
+                    printText(portFolioLink, 10, newArr7, count, portfolioP)
+                }, 6750))
+                .then(() => alreadyDone.printedText = true)
+        }
+        const closeModal = () => {
+            modal.style.display = 'none'
+        }
+        const outsideClick = (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none'
+            }
+        }
+    </script>
+
+    
+</body>
+</html>

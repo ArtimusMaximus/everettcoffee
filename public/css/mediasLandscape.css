@@ -1,0 +1,131 @@
+/* @media (orientation: landscape) and (min-width: 667px) {
+    .card {
+        font-size: 3vh;
+        margin-bottom: 15px;
+    }
+    .textoutline {
+        height: fit-content;
+        min-height: 27vh;
+    }
+}
+@media (orientation: landscape) and (max-width: 653px) {
+    .card {
+        font-size: 3vh;
+        margin-bottom: 15px;
+    }
+    .textoutline {
+        height: fit-content;
+        min-height: 27vh;
+    }
+}
+@media (orientation: landscape) and (max-width: 740px) {
+    .card {
+        font-size: 3vh;
+        margin-bottom: 15px;
+    }
+    #business {
+        font-size: 4vh;
+    }
+    .textoutline {
+        height: fit-content;
+        min-height: 27vh;
+    }
+}
+@media (orientation: landscape) and (max-width: 915px) {
+    .card {
+        font-size: 3vh;
+        margin-bottom: 15px;
+        
+    }
+    #business {
+        font-size: 4vh;
+    }
+    .textoutline {
+        height: fit-content;
+        min-height: 40vh;
+    }
+}
+@media (orientation: landscape) and (max-width: 1024px) {
+    .card {
+        font-size: 3vh;
+        margin-bottom: 15px;
+    }
+    #address, #activity  {
+        font-size: 9vh;
+    }
+    .textoutline {
+        height: fit-content;
+        min-height: 89vh;
+    }
+}
+@media (orientation: landscape) and (max-width: 1180px) {
+    .card {
+        font-size: 2vh;
+        margin-bottom: 15px;
+    }
+     #address, #activity  {
+        font-size: 2vh;
+    }
+    .textoutline {
+        height: fit-content;
+        min-height: 33vh;
+    }
+}
+@media (orientation: landscape) and (max-width: 1280px) {
+    .card {
+        font-size: 3vh;
+        margin-bottom: 15px;
+    }
+    
+    .textoutline {
+        height: fit-content;
+        min-height: 22vh;
+    }
+}
+@media (orientation: landscape) and (min-width: 1281px) {
+    .card {
+        font-size: 3.5vh;
+        margin-bottom: 15px;
+    }
+     #address, #activity  {
+        font-size: 2vh;
+    }
+    
+    .textoutline {
+        height: 38vh;
+        min-height: fit-content;
+        
+    }
+} */
+
+@media (orientation: landscape)  and (max-width: 896px) {
+    
+    .textoutline {
+        height: 50%;
+    }
+    ul > li {
+        width: 50%;
+    }
+    #everetth3 {
+        font-size: 2vw;
+    }
+    #h1coffee {
+        font-size: 5vw;
+    }
+    .navbarUl {
+        margin: 0 0 0 4vw;
+    }
+    #search {
+        width: 60%;
+    }
+    #h1coffee {
+        margin-right: 5px;
+    }
+    .material-symbols-outlined {
+        font-size: 25px;
+        margin-top: 0px;
+        
+        
+    }
+    
+}
