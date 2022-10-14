@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,200;0,500;1,500&family=Play:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/mediastyles.css">
     <link rel="stylesheet" href="./css/modals.css">
     <link rel="stylesheet" href="./css/cardstyles.css">
     <link rel="stylesheet" href="./css/mediasLandscape.css">
@@ -103,8 +102,6 @@
         // console.log(selectionMenu);
         // console.log(pagiResults.choice);
         
-        
-
         const getDining = async (url, token) => {
             await fetch(url, {
                 method: 'GET',
@@ -154,7 +151,6 @@
                     e.target.blur();
                 }
                 
-
                 const textInput = e.target.value.toLowerCase()
 
                 cardDiv.forEach((i, index) => {
@@ -180,8 +176,6 @@
                     }
                 })
 
-
-
                 let ret = Array.from(document.querySelectorAll('.hide'))
                     
                     if (cardDiv.length === ret.length) {
@@ -192,27 +186,6 @@
                     }
 
             })
-            
-
-
-            // let clearButton = document.getElementById('clearButton')
-            //     clearButton.addEventListener('click', e => {
-            //         if (e) {
-            //             searchInput.value = ''
-            //             cardDiv.forEach(i => i.className = 'card')
-            //             // liClass.forEach(i => i.classList.add('revealAll'))
-                        
-            //             // searchInput.focus = true
-            //             searchInput.focus()
-
-            //             activeLink.click()
-            //         }
-            //     })
-
-                
-
-
-
 
         } // end card generator
 
@@ -248,8 +221,6 @@
                 <p>Description: ${weather[0].description}</p>
                 
             `
-            // <p>Wind speed: ${wind.speed}</p>
-            // <p>Wind Direction: ${wind.deg}°<div id="pointer" style="transform: rotate(${Number(wind.deg) / 4}deg); ${Number(wind.deg) === 0 ? 'height: 0px;' : 'height:2px;'}">N</div></p>
         }
         getWeather(url)
 
@@ -257,13 +228,9 @@
 
     <script type="module">
         import { printText } from './t800lib.js'
-        let newArr1 = [];
-        let newArr2 = [];
-        let newArr3 = [];
-        let newArr4 = [];
-        let newArr5 = [];
-        let newArr6 = [];
-        let newArr7 = [];
+        
+        let [newArr1, newArr2, newArr3, newArr4, newArr5, newArr6, newArr7] = [[], [], [], [], [], [], [], []];
+
         let count = 1;
         let alreadyDone = { printedText: false }
         let creatorP = document.querySelector('#creatorP')
@@ -311,10 +278,10 @@
                     printText(words[4], 55, newArr5, count, location5)
                 }, 4250))
                 .then(() => setTimeout(() => {
-                    printText(linkedInProfile, 15, newArr6, count, creatorP)
+                    printText(linkedInProfile, 10, newArr6, count, creatorP)
                 }, 5750))
                 .then(() => setTimeout(() => {
-                    printText(portFolioLink, 10, newArr7, count, portfolioP)
+                    printText(portFolioLink, 5, newArr7, count, portfolioP)
                 }, 6750))
                 .then(() => alreadyDone.printedText = true)
         }
@@ -329,97 +296,7 @@
     </script>
 
     <script>
-       
-        // let navBarHeight = document.querySelector('.navbar')
-        // let everetth3 = document.querySelector('#everetth3')
-
-        // let currentOrientation;
-        // window.addEventListener('orientationchange', e => {
-        //     console.log(e.target.screen.orientation);
-        //     currentOrientation = e.target.screen.orientation
-        //     fireDelay(currentOrientation)
-        // })
-
-        //     let cardMargin;
-        //     let delay = t => new Promise(resolve => setTimeout(resolve, t))
-            
-        //     function fireDelay(currentOrientation) {
-        //         delay(500).then(() => {
-        //         cardMargin = document.querySelectorAll('.card')
-        //         console.log('fired');
-        //     })
-        //     .then(() => {
-        //         console.log('co in then', currentOrientation);
-        //         switch (currentOrientation) {
-        //         case "landscape-primary":
-        //             console.log('is landscape');
-        //             navBarHeight.style.height = '26vh'
-        //             console.log('why arent u working');
-        //             cardMargin.forEach(i => i.style.margin = '18px')
-                    
-        //             break;
-        //         case 'portrait-primary':
-        //             console.log('is portrait');
-        //             navBarHeight.style.height = '10vh'
-        //             everetth3.style.fontSize = '4vw'
-        //             break;
-                
-        //         default:
-        //             return
-        //         }
-        //     })
-        //     .catch(err => console.log(err))
-        
-        //     }
-        
-        ////////////////////////////////////////////////////
-        // let orientation = window.screen.orientation.type
-        // let ullist = document.querySelector('#ullist')
-        window.addEventListener('orientationchange', e => {
-            console.log(window);
-            
-            switch (e.target.screen.orientation.type) {
-                case 'landscape-primary':
-                    console.log('landscape');
-                    
-                    break;
-                case 'portrait-primary':
-                    console.log('portrait');
-                    break;
-                default:
-                    console.log('default');
-            }
-        })
-        
-        // const delay = t => new Promise(resolve => setTimeout(resolve, t))
-        // const del = () => {
-        //     delay(3000)
-        //         .then(() => {
-        //             let arr = Array.from(ullist.children)
-        //             console.log('3 seconds');
-        //             arr.forEach(i => {
-        //                 i.firstElementChild.style.marginTop = '15px'
-        //             })
-        //         })
-        // }
-
-        // const fireSwitch = () => {
-        //     switch (orientation) {
-        //     case 'landscape-primary':
-        //         del();
-        //         console.log('del fired?');
-        //         break;
-        //     case 'portrait-primary':
-        //         console.log('pp');
-        //         break;
-        //     default:
-        //         console.log('default');
-        //     }
-        // }
-        // fireSwitch()
-
-    </script>
-    <script>
+        // 'clear search box' refresh button visibility
         let search = document.querySelector('#search')
         const delay = t => new Promise(resolve => setTimeout(resolve, t))
 
@@ -435,9 +312,6 @@
                     .then(() => refresh.style.visibility = 'hidden')
             }
         })
-        
-        
-        
         
     </script>
 

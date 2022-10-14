@@ -38,9 +38,6 @@ body {
     padding-bottom: 10px;
     min-height: 75vh;
     display: block;
-     /*
-    flex-wrap: wrap;
-    */
     align-items: center;
     justify-content: center; 
 }
@@ -103,7 +100,7 @@ input {
 
 #weather {
     margin: .5rem;
-    font-size: 1vw;
+    font-size: .75vw;
     color: #ced9e6;
     width: fit-content;
 }
@@ -138,7 +135,9 @@ input {
 .navbar > h3 {
     width: auto;
 }
-
+.navbarUl {
+    margin-left: 4vw;
+}
 ul {
     list-style-type: none;
     
@@ -147,9 +146,6 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.navbarUl {
-    margin-left: 4vw;
 }
 
 ul > li {
@@ -172,9 +168,7 @@ li a:hover {
 
 /* Header ----------------------------- */
 
-p:hover {
-    font-style: italic;
-}
+
 
 .navcontainer {
     margin-left: 10vw;
@@ -221,12 +215,9 @@ p:hover {
     margin: 5px;
     align-items: center;
     justify-content: center;
-    
-   
     font-weight: 900;
     font-size: 36px;
 }
-
 
 /* for pagi comp */
 .pagiLink {
@@ -234,7 +225,6 @@ p:hover {
     font-size: 1rem;
     display: inline-flex;
     flex-wrap: wrap;
-    
     padding: 2%;
 }
 .pagiLink:hover {
@@ -320,8 +310,6 @@ button {
     font-weight: 600;
 }
 
-
-
 #top {
     background-color: #3f312a;
     text-decoration: none;
@@ -329,28 +317,22 @@ button {
     border-radius: 5px;
     padding: 5px;
     float: right;
-    
-    
 }
 #top :hover {
     cursor: pointer;
     background-color: #c4cedb;
     color: #c4cedb;
 }
-
 .ulcontainer :hover {
     cursor: help;
     background-color: #c4cedb;
 }
-
 
 .ulcontainer > a {
     float: right;
     text-decoration: none;
     color: inherit;
 }
-
-
 
 #pointer {
     background-color: #c4cedb;
@@ -381,7 +363,6 @@ button {
     color: #c4cedb;
     
 }
-
 #prev3 {
     background-color: none;
     color: none;
@@ -389,7 +370,6 @@ button {
     font-size: xx-large;
     opacity: .9;
 }
-
 .noSelect {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
@@ -405,7 +385,6 @@ button {
 h1 {
     font-size: 10vh;
 }
-
 .navcontainer > ul > h3 {
     color: #967564;
 }

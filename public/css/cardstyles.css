@@ -2,7 +2,6 @@
 
 .card {
     background-color: #ced9e6;
-    
     padding: 6px;
     /* min-width: 65%; */
     margin: 1vh;
@@ -21,26 +20,20 @@
 }
 .textoutline {
     border: 2px solid #1b1710;
-    height: 17vh;
+    height: 22vh;
     border-radius: 5px;
     width: 100%;
     padding: 5px;
     overflow-y: auto;
-    
 }
 .textoutline > p {
     margin-top: .75vh;
 }
-
-.card p {
-    
-}
-
 #activity {
-    font-size: 1vw;
+    font-size: .95vw;
 }
 #address {
-    font-size: 1vw;
+    font-size: .95vw;
 }
 #business {
     font-weight: 900;

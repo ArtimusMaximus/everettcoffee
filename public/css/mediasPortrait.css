@@ -1,30 +1,15 @@
-/* @media (orientation: portrait) and (max-width: 375px) {
-    .textoutline {
-        height: 27vh;
-    }
-}
 
-
-@media (orientation: portrait) and (min-width: 414px) {
-    .textoutline {
-        height: 21vh;
-    }
-}
-
-@media (min-width: 375px) and (max-width: 500px) {
-
-} */
 
 @media (orientation: portrait) {
     #activity {
         font-size: 1.5vh;
     }
     #address {
-        font-size: 1.5vh;
+        font-size: 1.4vh;
     }
     #business {
         font-weight: 900;
-        font-size: 1.75vh;
+        font-size: 1.55vh;
     }
     #everetth3 {
         font-size: 2vw;
@@ -57,5 +42,11 @@
     }
     #weather p {
         font-size: 2vw;
+    }
+}
+
+@media (orientation: portrait) and (max-width: 912px) {
+    .textoutline {
+        height: 17vh;
     }
 }

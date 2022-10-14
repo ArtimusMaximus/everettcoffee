@@ -146,7 +146,8 @@ export function paginate(array, contentLimit, uList, pageNumContainer) {
                 // this is for the data not the numbers
             }
         })
-
+        let noRes = document.querySelector('#noresults')
+            noRes.style.display = 'none'
     }))
 
     let naviButtons = Array.from(document.querySelectorAll('.naviButtons'))
@@ -165,7 +166,8 @@ export function paginate(array, contentLimit, uList, pageNumContainer) {
             } catch (err) {
 
             }
-
+            let noRes = document.querySelector('#noresults')
+            noRes.style.display = 'none'
         })
     ))
 
